@@ -1,0 +1,25 @@
+{
+  "name": "azurefunction",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prestart": "npm run build",
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/cosmos": "^3.15.1",
+    "@azure/storage-blob": "^12.9.0",
+    "node-blob": "0.0.2",
+    "resize-img": "^2.0.0"
+  },
+  "devDependencies": {
+    "@azure/functions": "^1.2.3",
+    "@types/node": "^17.0.21",
+    "@types/resize-img": "^2.0.1",
+    "@types/uuid": "^8.3.4",
+    "typescript": "^4.0.0"
+  }
+}

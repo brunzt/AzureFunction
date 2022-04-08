@@ -1,0 +1,46 @@
+{
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "thumbnailqueue",
+      "connection": "Service_buss_connecton_string"
+    },
+    {
+      "type": "blob",
+      "direction": "in",
+      "name": "inputBlob",
+      "dataType": "binary",
+      "path": "images/{id}",
+      "connection": "Storage_account_connection_string"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputDocument",
+      "databaseName": "azure101",
+      "collectionName": "images",
+      "connectionStringSetting": "COSMOS_CONNECTION_STRING",
+      "id": "{id}",
+      "partitionKey": "{id}"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputDocument",
+      "databaseName": "azure101",
+      "collectionName": "images",
+      "createIfNotExists": false,
+      "connectionStringSetting": "COSMOS_CONNECTION_STRING"
+    },
+    {
+      "type": "blob",
+      "direction": "out",
+      "name": "outputBlob",
+      "path": "thumbnails/{id}",
+      "connection": "Storage_account_connection_string"
+    }
+  ],
+  "scriptFile": "../dist/ServiceBusQueueTriggerThumbnail/index.js"
+}

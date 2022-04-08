@@ -1,0 +1,36 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "post"
+      ],
+      "route": "post"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputCosmosDbDocument",
+      "databaseName": "azure101",
+      "collectionName": "images",
+      "createIfNotExists": false,
+      "connectionStringSetting": "COSMOS_CONNECTION_STRING"
+    },
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "Service_buss_connecton_string",
+      "name": "outputSbMsg",
+      "queueName": "thumbnailqueue"
+    }
+  ],
+  "scriptFile": "../dist/func-http-post-images/index.js"
+}
